@@ -8,7 +8,7 @@ from src.db.database import DatabaseManager
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
-from src.models.models import License, LicenseCreate, LicenseUpdate
+from src.models.models import License, LicenseCreate, LicenseUpdate, LicenseValidationResponse
 
 db = DatabaseManager()
 router = APIRouter()
@@ -17,7 +17,7 @@ limiter = Limiter(key_func=get_remote_address)
 
 
 
-@router.get("/validate", response_model=bool, status_code=status.HTTP_200_OK)
+@router.get("/validate", response_model=LicenseValidationResponse, status_code=status.HTTP_200_OK)
 def check_license( request: Request):
     """
     Get a license by its ID.

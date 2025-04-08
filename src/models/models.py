@@ -22,3 +22,6 @@ class LicenseUpdate(BaseModel):
     type: Optional[str] = None
     valid_until: Optional[str] = None
     active: Optional[bool] = None
+
+class LicenseValidationResponse(BaseModel):
+    valid: bool
