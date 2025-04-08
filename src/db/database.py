@@ -1,7 +1,6 @@
 import sqlite3
 import uuid
-from typing import Optional, List, Dict, Any
-from pydantic import BaseModel
+from typing import Dict, Any
 
 from src.models.models import License, LicenseUpdate
 

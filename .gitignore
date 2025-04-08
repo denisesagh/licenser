@@ -162,5 +162,5 @@ cython_debug/
 .idea/
 
 .env*
-!.env.example
+!src/.env.example
 licenses.db
