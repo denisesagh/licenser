@@ -1,0 +1,26 @@
+Custom Open Source Licence – Non-Commercial, Open Projects Only
+Copyright (c) 2025 Denis Esagholian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to use, copy, modify, and distribute the Software, exclusively for open-source and public projects, subject to the following conditions:
+
+1. Non-Commercial Use Only
+   The Software may not be used, either in part or in whole, in any project, product, or service that is offered commercially or used for financial gain.
+
+2. Open Source Requirement
+   Any project incorporating this Software must be entirely licensed under an Open Source Initiative (OSI)-approved license.
+   Proprietary forks, closed-source adaptations, or projects that restrict access to the source code are strictly prohibited.
+
+3. Private Use Allowed
+   The Software may be used privately or for educational purposes, provided it is not used for commercial gain.
+
+4. Permission for Exceptions
+   Any use beyond the scope defined in this licence requires prior, explicit, and written permission from the copyright holder.
+
+5. Attribution
+   The original author must be clearly attributed in all versions and forks of the Software.
+
+THIS SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND. THE AUTHOR SHALL NOT BE HELD LIABLE FOR ANY DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE.
+
+---
+
+If you wish to use this software in a commercial or proprietary context, please contact the author to obtain a separate licence agreement.
