@@ -25,8 +25,10 @@ def check_license( request: Request):
     license_id = request.headers.get("License-Id")
     if not license_id:
         raise HTTPException(status_code=400, detail="License ID not provided")
-
-    current_license: License = db.get_license_by_id(license_id)
+    try:
+        current_license: License = db.get_license_by_id(license_id)
+    except Exception as e:
+        raise HTTPException(status_code=404, detail="License not found")
     if not current_license:
         raise HTTPException(status_code=404, detail="License not found")
     if current_license.valid_until < datetime.now():
