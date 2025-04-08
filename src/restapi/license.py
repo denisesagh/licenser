@@ -35,7 +35,7 @@ def check_license( request: Request):
         raise HTTPException(status_code=403, detail="License expired")
     if not current_license.active:
         raise HTTPException(status_code=403, detail="License inactive")
-    return True
+    return {"valid": True}
 
 @router.post("/create", response_model=License, status_code=status.HTTP_201_CREATED)
 @limiter.limit("5/minute")
