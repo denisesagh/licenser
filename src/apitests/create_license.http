@@ -1,0 +1,10 @@
+POST http://localhost:8000/api/v1/license/create
+Content-Type: application/json
+Authorization: Bearer AUTH_TOKEN
+
+{
+  "name": "Trial License",
+  "type": "trial",
+  "valid_until": "2026-12-31",
+  "active": true
+}

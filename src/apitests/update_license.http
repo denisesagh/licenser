@@ -1,0 +1,11 @@
+POST http://localhost:8000/api/v1/license/update
+Content-Type: application/json
+Authorization: Bearer AUTH_TOKEN
+License-Id: YOUR LICENSE ID
+
+{
+  "name": "Trial License",
+  "type": "trial",
+  "valid_until": "2026-12-31",
+  "active": true
+}
