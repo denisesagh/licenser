@@ -1,4 +1,4 @@
-POST http://localhost:8000/api/v1/license/create
+POST http://localhost:9000/api/v1/license/create
 Content-Type: application/json
 Authorization: Bearer AUTH_TOKEN
 

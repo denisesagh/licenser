@@ -10,8 +10,9 @@ services:
       - pip_cache:/root/.cache/pip
     environment:
       - PYTHONPATH=/app:$PYTHONPATH
-      - ENV_MODE=prod
     working_dir: /app/src
+    env_file:
+      - ./src/.env
     command: sh -c "pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000"
     ports:
       - "127.0.0.1:9000:8000"  # Bind to localhost for security, use reverse proxy for external access

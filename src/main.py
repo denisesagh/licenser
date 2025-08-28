@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.exception_handlers import http_exception_handler
@@ -7,13 +9,14 @@ from starlette.middleware.errors import ServerErrorMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.requests import Request
-from src.services.env.env_helper import EnvHelper
+from starlette.responses import JSONResponse
+
 from restapi.license import router as license_router
 
-ALLOWED_ORIGINS = EnvHelper.get_env_var('ALLOWED_ORIGINS')
-ALLOWED_HEADERS = EnvHelper.get_env_var('ALLOWED_HEADERS')
-MODE = EnvHelper.get_env_var('MODE')
-AUTH_TOKENS = EnvHelper.get_env_var('AUTH_TOKENS')
+ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS')
+ALLOWED_HEADERS = os.getenv('ALLOWED_HEADERS').split(",")
+MODE = os.getenv('MODE')
+AUTH_TOKENS = os.getenv('AUTH_TOKENS').split(",")
 
 
 app = FastAPI(debug=False)
@@ -58,26 +61,26 @@ async def check_bearer_token(request: Request, call_next):
 
     auth_header = request.headers.get("Authorization")
     if not auth_header:
-        raise HTTPException(
+        return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Missing Authorization header",
+            content={"detail": "Missing Authorization header"}
         )
     try:
         scheme, token = auth_header.split()
         if scheme.lower() != "bearer":
             raise ValueError()
     except ValueError:
-        raise HTTPException(
+        return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid Authorization header format",
+            content={"detail": "Invalid Authorization header format"},
             headers={"WWW-Authenticate": "Bearer"},
         )
     if token not in AUTH_TOKENS:
         print(AUTH_TOKENS)
         print(token)
-        raise HTTPException(
+        return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired token",
+            content={"detail": "Invalid or expired token"},
             headers={"WWW-Authenticate": "Bearer"},
         )
     response = await call_next(request)
